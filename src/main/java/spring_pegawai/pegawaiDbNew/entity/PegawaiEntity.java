@@ -2,24 +2,28 @@ package spring_pegawai.pegawaiDbNew.entity;
 
 import jakarta.persistence.*;
 
-@Entity
-@Table(name = "pegawai")
-public class EPegawai {
+import java.io.Serializable;
 
+@Entity
+@Access(AccessType.FIELD)
+@Table(name = "pegawai")
+public class PegawaiEntity implements Serializable {
+
+    // Entity (Column di Table)
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_pegawai")
     private long idPegawai;
 
     @Column(name = "full_name")
     private String fullName;
 
-    @Column(name = "email_address")
+    @Column(name = "emailAddress")
     private String emailAddress;
 
-    public EPegawai(){}
+    public PegawaiEntity() {}
 
-    public EPegawai(String fullName, String emailAddress) {
+    public PegawaiEntity(String fullName, String emailAddress) {
         this.fullName = fullName;
         this.emailAddress = emailAddress;
     }
